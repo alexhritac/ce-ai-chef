@@ -1,104 +1,111 @@
 #include "raw_float.h"
 
-raw_float::raw_float(const std::string& input):
-base_{0}{
-    auto i{0}, counter{0};
-    auto decimal = false;
-    while (input[i] == 0)
+raw_float::raw_float(const std::string &input):     // The constructor is ready
+base_{0},
+minus_{false}{
+    auto i{0};
+    if (input[i] == '-'){
+        minus_ = true;
         ++i;
-    while (input[i] != '\0') {
-        if (!isdigit(input[i]) && input[i] != '.')
-            break;
-        else if (input[i] != '.'){
-            if (decimal)
-                counter--;
-            base_ = base_ * 10 + input[i]-48;
+    }
+    auto pos{0};
+    auto counter{-1};
+    while (isdigit(input[i]) || input[i] == '.'){
+        if (input[i] == '.'){
+            counter = 0;
+            pos = i;
         }
-        else
-            decimal = true;
+        else{
+            base_ = base_ * 10 + input[i] - 48;
+            if (counter != -1)
+                counter ++;
+            if (counter == cap_digits)
+                break;
+        }
         ++i;
     }
-    exp_ = counter;
-    check();
-}
-std::string raw_float::to_string() const{
-    std::ostringstream output{};
-    output << std::to_string(base_);
-    std::string my_output;
-    if (exp() >= 0){
-        for (auto i=0; i < exp(); i++)
-            output << '0';
-        my_output = output.str();
-    }
-    else {
-        my_output = output.str();
-        auto size = my_output.length();
-        my_output.insert(size+exp(), ".");
-    }
-    return my_output;
+    auto multiplication{1};
+    for (unsigned int j = 0; counter != cap_digits && j < cap_digits +1-(input.size() - pos); ++j)
+        multiplication *= 10;
+    base_ *= multiplication;
 }
 
-long long raw_float::base() const {
-    return base_;
-}
+std::string raw_float::to_string() const {
+    std::string result;
+    if (minus()) result += '-';
+    result += std::to_string(base_);
+    result.insert(result.size() - cap_digits, ".");
+    return result;
+}      // The printing function is ready
 
-long long raw_float::exp() const {
-    return exp_;
-}
-
-raw_float& raw_float::operator+=(const raw_float& second) {
-    if (this->exp() == second.exp())
-        this->base_ += second.base();
-    else if (exp_ > second.exp()) {
-        auto multiplicator{1};
-        for (auto i = 0; i < exp() - second.exp(); ++i)
-            multiplicator *= 10;
-        base_ *= multiplicator;
-        exp_ = second.exp();
-        base_ += second.base();
-    }
-    else {
-        auto multiplicator{1};
-        for (auto i = 0; i < second.exp() - exp(); ++i)
-            multiplicator *= 10;
-        base_ += second.base() * multiplicator;
-    }
+raw_float &raw_float::operator+=(const raw_float &other) {
     return *this;
 }
 
-raw_float &raw_float::operator-=(const raw_float &second) {
-    if (this->exp() == second.exp())
-        this->base_ -= second.base();
-    else if (exp_ > second.exp()) {
-        auto multiplicator{1};
-        for (auto i = 0; i < exp() - second.exp(); ++i)
-            multiplicator *= 10;
-        base_ *= multiplicator;
-        exp_ = second.exp();
-        base_ -= second.base();
-    }
-    else {
-        auto multiplicator{1};
-        for (auto i = 0; i < second.exp() - exp(); ++i)
-            multiplicator *= 10;
-        base_ -= second.base() * multiplicator;
-    }
+raw_float &raw_float::operator-=(const raw_float &other) {
     return *this;
 }
 
-bool raw_float::operator==(const raw_float &other) const{
-    if (this->base() == other.base() && this->exp() == other.exp())
-        return true;
+raw_float &raw_float::operator*=(const raw_float &other) {
+    return *this;
+}
+
+raw_float &raw_float::operator/=(const raw_float &other) {
+    return *this;
+}
+
+raw_float raw_float::operator+(const raw_float &other) const {
+    return *this;
+}
+
+raw_float raw_float::operator-(const raw_float &other) const {
+    return *this;
+}
+
+raw_float raw_float::operator*(const raw_float &other) const {
+    return *this;
+}
+
+raw_float raw_float::operator/(const raw_float &other) const {
+    return *this;
+}
+
+bool raw_float::operator<(const raw_float &other) const {
+    return false;
+}
+
+bool raw_float::operator<=(const raw_float &other) const {
+    return false;
+}
+
+bool raw_float::operator>(const raw_float &other) const {
+    return false;
+}
+
+bool raw_float::operator>=(const raw_float &other) const {
+    return false;
+}
+
+bool raw_float::operator==(const raw_float &other) const {
     return false;
 }
 
 bool raw_float::operator!=(const raw_float &other) const {
-    return !(*this == other);
+    return false;
 }
 
-void raw_float::check() {
-    while (base() % 10 == 0){
-        base_/=10;
-        exp_ ++;
-    }
+raw_float raw_float::sqrt() const {
+    return *this;
+}
+
+raw_float raw_float::to_power(int power) const {
+    return *this;
+}
+
+unsigned long long raw_float::base() const {
+    return base_;
+}
+
+bool raw_float::minus() const {
+    return minus_;
 }

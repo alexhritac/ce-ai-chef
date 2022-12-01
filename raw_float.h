@@ -4,7 +4,8 @@
 #include <string>
 #include <thread>
 #include <sstream>
-#include <cmath>
+
+#define cap_digits 6
 
 class raw_float {
 public:
