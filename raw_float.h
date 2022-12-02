@@ -36,6 +36,7 @@ public:
     // Extra functions
     raw_float sqrt() const;
     raw_float to_power(int power) const;
+
     // Get functions
     [[nodiscard]] unsigned long long base() const;
     [[nodiscard]] bool minus() const;
