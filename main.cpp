@@ -1,11 +1,11 @@
 #include "raw_float.h"
 
 int main() {
-    raw_float rawFloat {"4.56"};
-    raw_float rawFloat1{"12.56"};
-    raw_float rawFloat2{"1.423"};
-    raw_float rawFloat3{"4.6"};
-    raw_float rawFloat4{"1.56"};
+    raw_float rawFloat {"4231234245.56"};
+    raw_float rawFloat1{"14311234231.56"};
+    raw_float rawFloat2{"17211232335.423"};
+    raw_float rawFloat3{"91123234324.6"};
+    raw_float rawFloat4{"162121233145.56"};
 
     rawFloat += rawFloat1;
     rawFloat1 -= rawFloat2;
@@ -31,4 +31,6 @@ int main() {
     std::cout << rf4.to_string() << '\n';
     std::cout << rf5.to_string() << '\n';
     std::cout << std::endl;
+
+    // Still need to implement the sqrt and *= operation
 }

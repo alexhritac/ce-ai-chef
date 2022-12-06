@@ -65,14 +65,12 @@ raw_float &raw_float::operator-=(const raw_float &other) {
 
 raw_float &raw_float::operator*=(const raw_float &other) {
     minus_ = minus() != other.minus();
-    auto multiplicator{1}, counter{0};
-    while (base_ % multiplicator == 0 && other.base() % multiplicator == 0){
-        multiplicator *=10;
-        counter ++;
-    }
-    multiplicator /= 10;
-    base_ = (base_/multiplicator) * (other.base()/multiplicator);
-    base_ *= multiplicator;
+    auto aux1 = base();
+    auto aux2 = other.base();
+    auto multiplicator{1};
+    for (auto i = 0; i < cap_digits; ++i)
+        multiplicator *= 10;
+    this->base_ = aux1 * aux2 / multiplicator;
     return *this;
 }
 
@@ -114,27 +112,27 @@ raw_float raw_float::operator/(const raw_float &other) const {
 }
 
 bool raw_float::operator<(const raw_float &other) const {
-    return false;
+    return (base() < other.base());
 }
 
 bool raw_float::operator<=(const raw_float &other) const {
-    return false;
+    return (base() <= other.base());
 }
 
 bool raw_float::operator>(const raw_float &other) const {
-    return false;
+    return (base() > other.base());
 }
 
 bool raw_float::operator>=(const raw_float &other) const {
-    return false;
+    return (base() >= other.base());
 }
 
 bool raw_float::operator==(const raw_float &other) const {
-    return false;
+    return (base() == other.base());
 }
 
 bool raw_float::operator!=(const raw_float &other) const {
-    return false;
+    return (base() != other.base());
 }
 
 raw_float raw_float::sqrt() const {
@@ -142,7 +140,10 @@ raw_float raw_float::sqrt() const {
 }
 
 raw_float raw_float::to_power(int power) const {
-    return *this;
+    raw_float result{this->to_string()};
+    for (auto i = 0; i < power -1; i++)
+        result *= *this;
+    return result;
 }
 
 unsigned long long raw_float::base() const {
