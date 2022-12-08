@@ -1,11 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(Topic1Demo)
 
-set(CMAKE_CXX_STANDARD 23)
-
-add_executable(Topic1Demo main.cpp raw_float.cpp)
-
-cmake_minimum_required(VERSION 3.20)
+add_executable(Topic1Demo)
 
 option(USE_ASAN "Use address sanitizer if available" OFF)
 option(USE_UBSAN "Use undefined behavior sanitizer if available" OFF)
@@ -17,7 +13,8 @@ set(target Topic1Demo)
 
 target_sources(${target}
         PRIVATE
-        main.cpp)
+        main.cpp
+        raw_float.cpp)
 
 target_compile_features(${target} PRIVATE cxx_std_23)
 set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF)

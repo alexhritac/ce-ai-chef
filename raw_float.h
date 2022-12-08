@@ -2,10 +2,10 @@
 #define TOPIC1DEMO_RAW_FLOAT_H
 #include <iostream>
 #include <string>
-#include <thread>
 #include <sstream>
+#include <stdexcept>
 
-#define cap_digits 6
+#define cap_digits 8
 
 class raw_float {
 public:
@@ -13,37 +13,52 @@ public:
     explicit raw_float(const std::string& input);
 
     // Printing function
-    [[nodiscard]] std::string to_string() const;
+    std::string to_string() const;
 
     // Operators
     raw_float& operator+=(const raw_float& other);
-    raw_float& operator-=(const raw_float& other);
-    raw_float& operator*=(const raw_float& other);
-    raw_float& operator/=(const raw_float& other);
-    raw_float operator+(const raw_float& other) const;
-    raw_float operator-(const raw_float& other) const;
-    raw_float operator*(const raw_float& other) const;
-    raw_float operator/(const raw_float& other) const;
+
+    raw_float &operator-=(const raw_float &other);
+
+    raw_float &operator*=(const raw_float &other);
+
+    raw_float &operator/=(const raw_float &other);
+
+    raw_float operator+(const raw_float &other) const;
+
+    raw_float operator-(const raw_float &other) const;
+
+    raw_float operator*(const raw_float &other) const;
+
+    raw_float operator/(const raw_float &other) const;
 
     // Comparison operators
-    bool operator< (const raw_float& other) const;
-    bool operator<=(const raw_float& other) const;
-    bool operator> (const raw_float& other) const;
-    bool operator>=(const raw_float& other) const;
-    bool operator==(const raw_float& other) const;
-    bool operator!=(const raw_float& other) const;
+    bool operator<(const raw_float &other) const;
+
+    bool operator<=(const raw_float &other) const;
+
+    bool operator>(const raw_float &other) const;
+
+    bool operator>=(const raw_float &other) const;
+
+    bool operator==(const raw_float &other) const;
+
+    bool operator!=(const raw_float &other) const;
 
     // Extra functions
-    raw_float sqrt() const;
-    raw_float to_power(int power) const;
+    raw_float to_power(unsigned int power) const;
 
     // Get functions
-    [[nodiscard]] unsigned long long base() const;
-    [[nodiscard]] bool minus() const;
+    unsigned long long base() const;
+
+    bool minus() const;
+
+    friend size_t nr_of_bits(unsigned long long value);
+
 private:
     unsigned long long base_;
     bool minus_;
 };
 
-
+size_t nr_of_bits(unsigned long long value);
 #endif //TOPIC1DEMO_RAW_FLOAT_H

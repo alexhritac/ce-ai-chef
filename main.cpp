@@ -1,36 +1,71 @@
 #include "raw_float.h"
 
 int main() {
-    raw_float rawFloat {"4231234245.56"};
-    raw_float rawFloat1{"14311234231.56"};
-    raw_float rawFloat2{"17211232335.423"};
-    raw_float rawFloat3{"91123234324.6"};
-    raw_float rawFloat4{"162121233145.56"};
+//    //Reading and printing the raw_float    (cap_digits set to 8)
+//    raw_float number1 {"1.5600"};
+//    raw_float number2 {"0.341523"};
+//    raw_float number3 {"-12379612.127863123124"};
+//
+//    std::cout << number1.to_string() << '\n';
+//    std::cout << number2.to_string() << '\n';
+//    std::cout << number3.to_string() << '\n';
 
-    rawFloat += rawFloat1;
-    rawFloat1 -= rawFloat2;
-    rawFloat2 *= rawFloat3;
-    rawFloat3 /= rawFloat4;
 
-    std::cout << rawFloat.to_string() << '\n';
-    std::cout << rawFloat1.to_string() << '\n';
-    std::cout << rawFloat2.to_string() << '\n';
-    std::cout << rawFloat3.to_string() << '\n';
-    std::cout << rawFloat4.to_string() << '\n';
-    std::cout << std::endl;
+//    // Performing addition                  (cap_digits set to 8)
+//    raw_float number1 {"1.5"};
+//    raw_float number2 {"12.65"};
+//    raw_float number3 {"-5.23"};
+//
+//    raw_float new_one = number1 + number2;
+//    raw_float new_two = number1 + number3;
+//    raw_float new_three = number2 + number3;
+//
+//    std::cout << number1.to_string() << "\t\t+" << number2.to_string() << "\t= " << new_one.to_string() << '\n';
+//    std::cout << number1.to_string() << "\t\t+" << number3.to_string() << "\t= " << new_two.to_string() << '\n';
+//    std::cout << number2.to_string() << "\t\t+" << number3.to_string() << "\t= " << new_three.to_string() << '\n';
 
-    raw_float rf1 = rawFloat4 + rawFloat4;
-    raw_float rf2 = rawFloat3 - rawFloat4;
-    raw_float rf3 = rawFloat4 * rawFloat4;
-    raw_float rf4 = rawFloat2 / rawFloat4;
-    raw_float rf5 = rawFloat4 * rawFloat4;
+//    // Performing subtraction               (cap_digits set to 8)
+//    raw_float number1 {"1.5"};
+//    raw_float number2 {"12.65"};
+//    raw_float number3 {"-5.23"};
+//
+//    raw_float new_one = number1 - number2;
+//    raw_float new_two = number1 - number3;
+//    raw_float new_three = number2 - number3;
+//
+//    std::cout << number1.to_string() << "\t\t-" << number2.to_string() << "\t= " << new_one.to_string() << '\n';
+//    std::cout << number1.to_string() << "\t\t-" << number3.to_string() << "\t= " << new_two.to_string() << '\n';
+//    std::cout << number2.to_string() << "\t\t-" << number3.to_string() << "\t= " << new_three.to_string() << '\n';
 
-    std::cout << rf1.to_string() << '\n';
-    std::cout << rf2.to_string() << '\n';
-    std::cout << rf3.to_string() << '\n';
-    std::cout << rf4.to_string() << '\n';
-    std::cout << rf5.to_string() << '\n';
-    std::cout << std::endl;
+//    //Performing multiplication            (cap_digits set to 8)
+//    raw_float number1 {"1.5"};
+//    raw_float number2 {"12.65"};
+//    raw_float number3 {"-5.23"};
+//
+//    raw_float new_one = number1 * number2;
+//    raw_float new_two = number1 * number3;
+//    raw_float new_three = number2 * number3;
+//
+//    std::cout << number1.to_string() << "\t\t*" << number2.to_string() << "\t= " << new_one.to_string() << '\n';
+//    std::cout << number1.to_string() << "\t\t*" << number3.to_string() << "\t= " << new_two.to_string() << '\n';
+//    std::cout << number2.to_string() << "\t\t*" << number3.to_string() << "\t= " << new_three.to_string() << '\n';
 
-    // Still need to implement the sqrt and *= operation
+//    //Performing division                   (cap_digits set to 8)
+//    raw_float number1 {"1.5"};
+//    raw_float number2 {"12.65"};
+//    raw_float number3 {"-5.23"};
+//
+//    raw_float new_one = number1 / number2;
+//    raw_float new_two = number1 / number3;
+//    raw_float new_three = number2 / number3;
+//
+//    std::cout << number1.to_string() << "\t\t/" << number2.to_string() << "\t= " << new_one.to_string() << '\n';
+//    std::cout << number1.to_string() << "\t\t/" << number3.to_string() << "\t= " << new_two.to_string() << '\n';
+//    std::cout << number2.to_string() << "\t\t/" << number3.to_string() << "\t= " << new_three.to_string() << '\n';
+
+//    // Performing float to a positive integer power (cap_digits set to 8)
+//    raw_float number1 {"1.5"};
+//
+//    raw_float result = number1.to_power(2);
+//    std::cout << result.to_string() << '\n';
 }
